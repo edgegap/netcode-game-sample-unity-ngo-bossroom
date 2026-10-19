@@ -1,4 +1,7 @@
 # Boss Room sample on Edgegap
+
+> **New:** optional [Edgegap Matchmaker](https://docs.edgegap.com/learn/matchmaking) support (a Find Match panel on the main menu, off by default) and server self-stop. See [EDGEGAP.md](EDGEGAP.md) for local, Docker, Edgegap and matchmaker testing.
+
 Create a dedicated server on Edgegap for Unity's [Boss Room sample](https://github.com/Unity-Technologies/com.unity.multiplayer.samples.coop). This sample does not require any Unity Gaming Services (UGS), Multiplay, or Relays to run. See guide for testing and customization in [Edgegap Learning Center](https://docs.edgegap.com/docs/sample-projects/unity-netcodes/unity-netcode-on-edgegap).
 
 ## Preparation
@@ -19,4 +22,5 @@ if (connectionPayload.isDebug != Debug.isDebugBuild)
 }
 ```
 
-- We added `Assets/Scripts/EdgegapServerStarter.cs` with an empty gameObject to the `MainMenu` scene to to automatically call `connectionManager.StartHostIp()` on server launch, using `0.0.0.0` as the address, and the value of the `ARBITRIUM_PORT_GAMEPORT_INTERNAL` environment variable as the port. The value used for the player name does not matter in this case.
+- We added `Assets/Scripts/EdgegapServerStarter.cs` with an empty gameObject to the `MainMenu` scene to automatically call `connectionManager.StartHostIp()` on server launch, using `0.0.0.0` as the address, and the value of the `ARBITRIUM_PORT_GAMEPORT_INTERNAL` environment variable as the port. Outside Edgegap (local runs, `docker run`), it uses port `9998` instead. The value used for the player name does not matter in this case.
+- We added `Assets/Edgegap/` (Edgegap Unity SDK): the server stops its own deployment once the match is empty, and an optional Edgegap Matchmaker client. Details in [EDGEGAP.md](EDGEGAP.md).

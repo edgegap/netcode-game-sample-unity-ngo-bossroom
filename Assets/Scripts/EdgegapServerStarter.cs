@@ -18,11 +18,19 @@ namespace Unity.Multiplayer.Samples.BossRoom
                 ConnectionManager connectionManager = GameObject.Find("ConnectionManager").GetComponent<ConnectionManager>();
                 string internalPortAsStr = Environment.GetEnvironmentVariable($"ARBITRIUM_PORT_{portMapName.ToUpper()}_INTERNAL");
 
-                if (internalPortAsStr == null || !ushort.TryParse(internalPortAsStr, out ushort port))
+                ushort port;
+                if (internalPortAsStr == null)
+                {
+                    // Not on Edgegap (local run or docker run): use EdgegapSettings.ListenPort or -edgegapListenPort.
+                    port = EdgegapBootstrap.Settings != null ? EdgegapBootstrap.Settings.ListenPort : (ushort)9998;
+                    Debug.LogWarning($"No ARBITRIUM_PORT_{portMapName.ToUpper()}_INTERNAL, not on Edgegap: listening on port {port}.");
+                }
+                else if (!ushort.TryParse(internalPortAsStr, out port))
                 {
                     throw new Exception($"Could not find port mapping, make sure your app version port name matches with \"{portMapName}\"");
                 }
 
+                Debug.Log($"Edgegap Server | Starting server on 0.0.0.0:{port}.");
                 connectionManager.StartHostIp("SERVER", "0.0.0.0", port);
             }
         }
