@@ -9,7 +9,7 @@ Players can join a server in two ways:
 
 In both modes the server stops its own Edgegap deployment once the match is empty, so idle servers don't cost money. The game client never holds an Edgegap API token.
 
-Tested end to end on 2026-10-19 with Unity `6000.0.54f1`, Netcode for GameObjects `1.13.0`, Unity Transport `2.5.2` (UDP) and the Edgegap Unity SDK (`main`, 3.5.6). Two Windows clients played in the dungeon on the same Edgegap server, first by direct connection and then through the matchmaker (matched, connected and in Character Select within 40 s of launch). Each time, the server stopped its own deployment after the players left.
+Tested end to end on 2026-10-19 with Unity `6000.0.54f1`, Netcode for GameObjects `1.13.0`, Unity Transport `2.5.2` (UDP) and the Edgegap Unity SDK `3.5.6` (resolved from `main` at the time, which pointed at the `3.5.6` release; `Packages/manifest.json` now pins the `3.5.6` tag). Two Windows clients played in the dungeon on the same Edgegap server, first by direct connection and then through the matchmaker (matched, connected and in Character Select within 40 s of launch). Each time, the server stopped its own deployment after the players left.
 
 ## What this adds
 
@@ -26,7 +26,7 @@ Everything Edgegap-specific lives in `Assets/Edgegap/` and adds itself at runtim
 | `Assets/Scripts/EdgegapServerStarter.cs` | Already in the sample (MainMenu scene). Starts the server with `StartHostIp("SERVER", "0.0.0.0", port)` on the `gameport` internal port; outside Edgegap it now falls back to `EdgegapSettings.ListenPort` (9998) instead of throwing, so the server runs locally and in `docker run`. |
 | `Dockerfile`, `.dockerignore` | Container image for the server build. |
 | `matchmaker-config.json` | Matchmaker configuration to upload in the dashboard. |
-| `Packages/manifest.json` | Adds `com.edgegap.unity-sdk` (git, `#main`) next to the existing Edgegap plugin. |
+| `Packages/manifest.json` | Adds `com.edgegap.unity-sdk` (git, pinned to release tag `#3.5.6`) next to the existing Edgegap plugin. To move to a newer SDK release, change the tag, let Unity resolve it, and rerun the two-client test. |
 
 The dedicated-server changes to Boss Room itself (server instead of host, no host payload, debug check) are listed in the [README](README.md#sample-modifications).
 
@@ -78,6 +78,10 @@ The matchmaker is off by default. Turn it on once direct connection works:
 4. Rebuild the client and start it twice (with `-AuthProfile p1` / `p2` on one PC). Click **Find Match** in the panel on the left of the main menu in both. The status goes through searching → match found → joining, then both players land in Character Select on the same server.
 
 The `casual` profile puts 2 to 8 players in a match. It fills up to 8 when it can; the expansion at 15 s lets it start with fewer (at least 2). Without an expansion stage the matchmaker only makes a partial match when the tickets expire (5 minutes), so keep one.
+
+**Playing alone:** a single player is never matched. The minimum stays at 2 players in every stage (the 15 s expansion only exists so that 2 to 7 players get a match quickly), so a lone ticket keeps searching until `ticket_expiration_period` (5 minutes) cancels it, and the panel then shows "No match found in time, try again." To play alone, use **Start with Direct IP → Join** against a deployment, or add an expansion that lowers `min_team_size` to 1 (untested here; in Edgegap's FishNet sample such an expansion did not make a lone ticket match before its expiry).
+
+**Known limitation:** the server does not check that a connecting player holds a matchmaker ticket for this match, so anyone who learns the server address can join. Deployments stop themselves when no one joins or everyone leaves, which limits cost. Before production, validate each player against the match's tickets (`MM_TICKET_IDS` / the matchmaker API) or an auth token. Boss Room's connection approval only rejects a full server or a duplicate player ID.
 
 ## Command-line options
 

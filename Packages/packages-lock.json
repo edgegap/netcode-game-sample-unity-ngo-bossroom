@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "com.edgegap.unity-sdk": {
-      "version": "https://github.com/edgegap/edgegap-unity-sdk.git#main",
+      "version": "https://github.com/edgegap/edgegap-unity-sdk.git#3.5.6",
       "depth": 0,
       "source": "git",
       "dependencies": {
