@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "com.edgegap.unity-servers-plugin": "https://github.com/edgegap/edgegap-unity-plugin.git#sample/unity-ngo-bossroom",
-    "com.edgegap.unity-sdk": "https://github.com/edgegap/edgegap-unity-sdk.git#main",
+    "com.edgegap.unity-sdk": "https://github.com/edgegap/edgegap-unity-sdk.git#3.5.6",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.ai.navigation": "2.0.8",
     "com.unity.cinemachine": "2.10.4",
