@@ -10,15 +10,14 @@
       "hash": "dd4e50934dc34b044ba5245edf7e663073be6621"
     },
     "com.edgegap.unity-servers-plugin": {
-      "version": "https://github.com/edgegap/edgegap-unity-plugin.git#sample/unity-ngo-bossroom",
+      "version": "https://github.com/edgegap/buildtool-unity-plugin.git#3.2.1",
       "depth": 0,
       "source": "git",
       "dependencies": {
         "com.unity.nuget.newtonsoft-json": "3.2.1",
-        "com.unity.toolchain.win-x86_64-linux-x86_64": "2.0.6",
         "com.unity.modules.uielements": "1.0.0"
       },
-      "hash": "c81034bbf00dc3b4e10bb4f206225accd581467b"
+      "hash": "ba2fdf10047458fd0a3c90040ba83c788b9e1a35"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
@@ -429,7 +428,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.toolchain.win-x86_64-linux-x86_64": {
-      "version": "2.0.10",
+      "version": "2.0.11",
       "depth": 0,
       "source": "registry",
       "dependencies": {

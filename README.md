@@ -5,7 +5,7 @@
 Create a dedicated server on Edgegap for Unity's [Boss Room sample](https://github.com/Unity-Technologies/com.unity.multiplayer.samples.coop). This sample does not require any Unity Gaming Services (UGS), Multiplay, or Relays to run. See guide for testing and customization in [Edgegap Learning Center](https://docs.edgegap.com/docs/sample-projects/unity-netcodes/unity-netcode-on-edgegap).
 
 ## Preparation
-This tutorial assumes you are already familiar with [using the Edgegap plugin](https://docs.edgegap.com/learn/unity-games/getting-started-with-servers).
+Build, containerize, upload and deploy the server from the [Edgegap Unity plugin](https://github.com/edgegap/buildtool-unity-plugin) (**Tools → Edgegap Server Hosting**), already installed in this project. Step by step: [EDGEGAP.md](EDGEGAP.md). Plugin basics: [getting started with servers](https://docs.edgegap.com/learn/unity-games/getting-started-with-servers).
 
 ## Sample Modifications
 For this sample to run as dedicated server, we made the following changes:
