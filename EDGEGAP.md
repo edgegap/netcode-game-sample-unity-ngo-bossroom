@@ -9,7 +9,7 @@ Players can join a server in two ways:
 
 In both modes the server stops its own Edgegap deployment once the match is empty, so idle servers don't cost money. The game client never holds an Edgegap API token.
 
-Tested end to end on 2026-10-19 with Unity `6000.0.54f1`, Netcode for GameObjects `1.13.0`, Unity Transport `2.5.2` (UDP) and the Edgegap Unity SDK `3.5.6` (resolved from `main` at the time, which pointed at the `3.5.6` release; `Packages/manifest.json` now pins the `3.5.6` tag). Two Windows clients played in the dungeon on the same Edgegap server, first by direct connection and then through the matchmaker (matched, connected and in Character Select within 40 s of launch). Each time, the server stopped its own deployment after the players left.
+Tested end to end on 2026-10-19 with Unity `6000.0.54f1`, Netcode for GameObjects `1.13.0`, Unity Transport `2.5.2` (UDP) and the Edgegap Unity SDK `3.5.6` (resolved from `main` at the time, which pointed at the `3.5.6` release; `Packages/manifest.json` now pins the `3.5.6` tag). Two Windows clients played in the dungeon on the same Edgegap server, first by direct connection and then through the matchmaker (matched, connected and in Character Select within 40 s of launch). Each time, the server stopped its own deployment after the players left. Re-run on 2026-10-29 after the switch to the Edgegap plugin (plugin `3.2.1`, image built with the plugin's Dockerfile): two Windows clients joined a direct deployment, picked heroes and entered the dungeon (`Edgegap Server | 2 player(s) connected.`), and the deployment stopped itself after they quit.
 
 ## What this adds
 
