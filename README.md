@@ -1,5 +1,7 @@
 # Boss Room sample on Edgegap
 
+![Add Edgegap matchmaking and dedicated game servers to Unity's Boss Room sample built with Netcode for GameObjects.](Documentation/Images/card.webp)
+
 > **New:** optional [Edgegap Matchmaker](https://docs.edgegap.com/learn/matchmaking) support (a Find Match panel on the main menu, off by default) and server self-stop. See [EDGEGAP.md](EDGEGAP.md) for local, Docker, Edgegap and matchmaker testing.
 
 Create a dedicated server on Edgegap for Unity's [Boss Room sample](https://github.com/Unity-Technologies/com.unity.multiplayer.samples.coop). This sample does not require any Unity Gaming Services (UGS), Multiplay, or Relays to run. See guide for testing and customization in [Edgegap Learning Center](https://docs.edgegap.com/docs/sample-projects/unity-netcodes/unity-netcode-on-edgegap).
