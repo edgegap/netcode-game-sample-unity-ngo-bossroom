@@ -10,14 +10,14 @@
       "hash": "dd4e50934dc34b044ba5245edf7e663073be6621"
     },
     "com.edgegap.unity-servers-plugin": {
-      "version": "https://github.com/edgegap/buildtool-unity-plugin.git#3.2.1",
+      "version": "https://github.com/edgegap/buildtool-unity-plugin.git#3.2.2",
       "depth": 0,
       "source": "git",
       "dependencies": {
         "com.unity.nuget.newtonsoft-json": "3.2.1",
         "com.unity.modules.uielements": "1.0.0"
       },
-      "hash": "ba2fdf10047458fd0a3c90040ba83c788b9e1a35"
+      "hash": "453c96c4ebc5300a73156e93f5df8852ec985404"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
