@@ -26,7 +26,7 @@ The server build, Docker image, upload and deploy all run from the [Edgegap Unit
 | `Assets/Edgegap/Editor/EdgegapPluginBuild.cs` | Command-line entry point for the plugin's **Build server** (scripted tests, CI): `Unity -batchmode -projectPath . -executeMethod EdgegapPluginBuild.BuildServer -logFile build-server.log`. Same output, `Builds/EdgegapServer/`. |
 | `.dockerignore` | The plugin builds the image with the project root as Docker context. This file sends only `Builds/EdgegapServer/` to Docker instead of the whole project (several GB). |
 | `matchmaker-config.json` | Matchmaker configuration to upload in the dashboard. |
-| `Packages/manifest.json` | The Edgegap plugin (`com.edgegap.unity-servers-plugin`, pinned to release tag `#3.2.1`) and the Edgegap Unity SDK (`com.edgegap.unity-sdk`, `#3.5.6`) used by the runtime scripts. To move to newer releases, change the tags, let Unity resolve them, and rerun the two-client test. |
+| `Packages/manifest.json` | The Edgegap plugin (`com.edgegap.unity-servers-plugin`, pinned to release tag `#3.2.2`) and the Edgegap Unity SDK (`com.edgegap.unity-sdk`, `#3.5.6`) used by the runtime scripts. To move to newer releases, change the tags, let Unity resolve them, and rerun the two-client test. |
 
 The dedicated-server changes to Boss Room itself (server instead of host, no host payload, debug check) are listed in the [README](README.md#sample-modifications).
 
